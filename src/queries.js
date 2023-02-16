@@ -1,3 +1,7 @@
+const getDescription = `
+  SELECT task FROM tasks task WHERE task.description = $1
+`;
+
 const getTasks = `
   SELECT * FROM tasks
 `;
@@ -14,7 +18,16 @@ const getTasksByPriority = `
   SELECT * FROM tasks WHERE priority = $1
 `;
 
+////////////////////////////////////////////////////
+
+const addTask = `
+  INSERT INTO tasks (description, status, priority) 
+  VALUES ($1, 'in-progress', $2)
+`;
+
 module.exports = {
+  addTask,
+  getDescription,
   getTasks,
   getTaskById,
   getTasksByStatus,
