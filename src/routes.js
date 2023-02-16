@@ -1,8 +1,7 @@
-const { Router } = require('express');
-const router = Router();
+const express = require('express');
+const controller = require('./controller');
+const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send("Using API route");
-})
+router.get('/', controller.getTasks);
 
 module.exports = router;
