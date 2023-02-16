@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.get('/', controller.getTasks);
 router.get('/:id', controller.getTaskById);
-router.get('/completed/:completed', controller.getStatus);
+router.get('/status/:status', controller.getTasksByStatus);
+router.get('/priority/:priority', controller.getTasksByPriority),
 
 module.exports = router;

@@ -27,12 +27,25 @@ const getTaskById = (req, res) => {
   })
 }
 
-// GET tasks by completion status (true or false)
-const getStatus = (req, res) => {
-  console.log("Test", req.params.completed);
-  const status = req.params.completed;
+// GET tasks by completion status (in-progress or completed)
+const getTasksByStatus = (req, res) => {
+  const status = req.params.status;
 
-  pool.query(queries.getStatus, [status], (error, results) => {
+  pool.query(queries.getTasksByStatus, [status], (error, results) => {
+      if (error) throw error;
+      
+      res.status(200).json(
+        // {message: "Retrieved all tasks."}, 
+        results.rows
+      )
+  })
+}
+
+// GET tasks by priority level (low, medium, or high)
+const getTasksByPriority = (req, res) => {
+  const priority = req.params.priority;
+
+  pool.query(queries.getTasksByPriority, [priority], (error, results) => {
       if (error) throw error;
       
       res.status(200).json(
@@ -45,5 +58,6 @@ const getStatus = (req, res) => {
 module.exports = {
   getTasks,
   getTaskById,
-  getStatus
+  getTasksByStatus,
+  getTasksByPriority
 };
