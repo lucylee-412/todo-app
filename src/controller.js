@@ -10,7 +10,7 @@ const getTasks = (req, res) => {
       // {message: "Retrieved all tasks."}, 
       results.rows
     )
-  })
+  });
 };
 
 // GET one task by specified ID
@@ -24,7 +24,7 @@ const getTaskById = (req, res) => {
         // {message: "Retrieved all tasks."}, 
         results.rows
       )
-  })
+  });
 };
 
 // GET tasks by completion status (in-progress or completed)
@@ -38,7 +38,7 @@ const getTasksByStatus = (req, res) => {
         // {message: "Retrieved all tasks."}, 
         results.rows
       )
-  })
+  });
 };
 
 // GET tasks by priority level (low, medium, or high)
@@ -52,7 +52,7 @@ const getTasksByPriority = (req, res) => {
         // {message: "Retrieved all tasks."}, 
         results.rows
       )
-  })
+  });
 };
 
 ////////////////////////////////////////////////////////
@@ -74,11 +74,31 @@ const addTask = (req, res) => {
         "New task to-do added."
       )
     });
-  })
+  });
+};
+
+const deleteTask = (req, res) => {
+  const id = parseInt(req.params.id);
+
+  pool.query(queries.getTaskById, [id], (error, results) => {
+      if (!results.rows.length) {
+        res.send("A task by this ID does not exist.");
+      }
+
+      pool.query(queries.deleteTask, [id], (error, results) => {
+        if (error) throw error;
+      
+        res.status(200).json(
+          // {message: "Retrieved all tasks."}, 
+          results.rows
+        )
+      });  
+  });
 };
 
 module.exports = {
   addTask,
+  deleteTask,
   getTasks,
   getTaskById,
   getTasksByStatus,

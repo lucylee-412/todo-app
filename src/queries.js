@@ -25,8 +25,13 @@ const addTask = `
   VALUES ($1, 'in-progress', $2)
 `;
 
+const deleteTask = `
+  DELETE FROM tasks WHERE id = $1
+`;
+
 module.exports = {
   addTask,
+  deleteTask,
   getDescription,
   getTasks,
   getTaskById,
