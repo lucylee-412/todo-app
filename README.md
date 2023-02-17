@@ -23,7 +23,10 @@ ADD COLUMN priority priority;
 
 ```
 
-###### If I had more time, I would've also created Sequelize models and a seed script.
+![image](https://user-images.githubusercontent.com/5422566/219547125-d22af965-43d0-43ca-b10d-9d4165d62973.png)  
+![image](https://user-images.githubusercontent.com/5422566/219547162-46493ffc-b0b4-49c3-aae8-015cd576722f.png)
+
+###### If I'd had more time, I would've also created Sequelize models and a seed script.
 
 _________________________________________________________________________________________
 
