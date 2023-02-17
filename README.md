@@ -14,11 +14,7 @@ psql DATABASE_NAME_HERE < todo.sql
 ```
 ![image](https://user-images.githubusercontent.com/5422566/219656582-c6a9cf2f-55e8-486f-a50b-1caa47deda1c.png)
 
-Make sure you have the latest version of Express and Node installed.  
-
-`npm install`  
-After connecting to the PSQL server, use `npm run dev` to run the API.
-
+If you encounter trouble using the dump file, here are the manual commands to run in SQL shell (psql):
 ```
 CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
@@ -34,6 +30,11 @@ ALTER TABLE tasks
 ADD COLUMN priority priority;
 
 ```
+
+Make sure you have the latest version of Express and Node installed.  
+
+`npm install`  
+After connecting to the PSQL server, use `npm run dev` to run the API.
 
 ![image](https://user-images.githubusercontent.com/5422566/219547125-d22af965-43d0-43ca-b10d-9d4165d62973.png)  
 ![image](https://user-images.githubusercontent.com/5422566/219547162-46493ffc-b0b4-49c3-aae8-015cd576722f.png)
