@@ -1,6 +1,7 @@
 ### Frontend repository can be found [here](https://github.com/lucylee-412/todo-app-react).
 
-PSQL was used to create the database. The configuration can be found [here](db.js).
+PSQL was used to create the database. The configuration can be found [here](db.js).  
+
 After connecting to the PSQL server, use `npm run dev` to run the API.
 
 ```
