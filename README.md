@@ -1,5 +1,26 @@
 ### Frontend repository can be found [here](https://github.com/lucylee-412/todo-app-react).
 
+PSQL was used to create the database. The configuration can be found [here](db.js).
+After connecting to the PSQL server, use `npm run dev` to run the API.
+
+```
+CREATE TABLE tasks (
+  id SERIAL PRIMARY KEY,
+  description VARCHAR (100) UNIQUE NOT NULL
+);
+
+CREATE TYPE status AS ENUM ('in-progress', 'completed');
+ALTER TABLE tasks
+ADD COLUMN status status;
+
+CREATE TYPE priority AS ENUM ('low', 'medium', 'high');
+ALTER TABLE tasks
+ADD COLUMN priority priority;
+
+```
+
+###### If I had more time, I would've also created Sequelize models and a seed script.
+
 _________________________________________________________________________________________
 
 ##### Getting a single to-do
@@ -27,5 +48,3 @@ ________________________________________________________________________________
 - User is able to make a DELETE request for a task specified by its ID, using `deleteTask`.
 
 _________________________________________________________________________________________
-
-PSQL was used to create the database. The configuration can be found [here](db.js).
