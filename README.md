@@ -2,7 +2,7 @@
 
 PSQL was used to create the database.
 - The configuration can be found [here](db.js).  
-- The SQL dump file can be found [here](todo.sql).
+- The SQL dump file can be found [here](todo.sql). Please copy this to your PSQL bin folder.
 
 ### Steps to create the database in PSQL using the dump file:
 1) Run SQL shell (psql) and create the database `tasks`. (If you would like to rename it something else, make sure to change the database specified in the `db.js` config.)
@@ -12,6 +12,8 @@ PSQL was used to create the database.
 ```
 psql DATABASE_NAME_HERE < todo.sql
 ```
+Optional: Use the flag `-U postgres` if you are having issues with password authentication.
+
 ![image](https://user-images.githubusercontent.com/5422566/219656582-c6a9cf2f-55e8-486f-a50b-1caa47deda1c.png)
 
 If you encounter trouble using the dump file, here are the manual commands to run in SQL shell (psql):
