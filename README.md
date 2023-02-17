@@ -1,6 +1,6 @@
 ### Frontend repository can be found [here](https://github.com/lucylee-412/todo-app-react).
 
-PSQL was used to create the database.
+PSQL was used to create the database `tasks`. (If you would like to rename it something else, make sure to change the database specified in the `db.js` config.)
 - The configuration can be found [here](db.js).  
 - The SQL dump file can be found [here](todo.sql).
 1) Run SQL shell and create your database.
