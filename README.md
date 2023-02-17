@@ -2,6 +2,9 @@
 
 PSQL was used to create the database. The configuration can be found [here](db.js).  
 
+Make sure you have the latest version of Express and Node installed.  
+
+`npm install`  
 After connecting to the PSQL server, use `npm run dev` to run the API.
 
 ```
