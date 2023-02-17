@@ -4,7 +4,7 @@ PSQL was used to create the database.
 - The configuration can be found [here](db.js).  
 - The SQL dump file can be found [here](todo.sql).
 
-Steps to create the database in PSQL using the dump file:
+### Steps to create the database in PSQL using the dump file:
 1) Run SQL shell (psql) and create the database `tasks`. (If you would like to rename it something else, make sure to change the database specified in the `db.js` config.)
 2) Run cmd on adminstrator.
 3) `cd` to your PSQL bin folder. The file path should look something like this: `C:\Program Files\PostgreSQL\14\bin`.
