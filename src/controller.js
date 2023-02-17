@@ -64,7 +64,7 @@ const addTask = (req, res) => {
   pool.query(queries.getDescription, [description], (error, results) => {
     // If a matching description is found, returned length will be truthy
     if (results.rows.length) {
-      res.send("A task with this description already exists on the to-do list.");
+      return res.send("A task with this description already exists on the to-do list.");
     }
 
     // Task is new -> Add to database
@@ -82,7 +82,7 @@ const deleteTask = (req, res) => {
 
   pool.query(queries.getTaskById, [id], (error, results) => {
       if (!results.rows.length) {
-        res.send("A task by this ID does not exist.");
+        return res.send("A task by this ID does not exist.");
       }
 
       pool.query(queries.deleteTask, [id], (error, results) => {
@@ -96,11 +96,65 @@ const deleteTask = (req, res) => {
   });
 };
 
+const updateDescription = (req, res) => {
+  const id = parseInt(req.params.id);
+  const { description } = req.body;
+
+  pool.query(queries.getTaskById, [id], (error, results) => {
+    if (!results.rows.length) {
+      return res.send("A task by this ID does not exist.");
+    }
+
+    pool.query(queries.updateDescription, [id, description], (error, results) => {
+      if (error) throw error;
+
+      res.status(201).send("Task has been successfully updated.");
+    })
+  })
+}
+
+const updatePriority = (req, res) => {
+  const id = parseInt(req.params.id);
+  const { priority } = req.body;
+
+  pool.query(queries.getTaskById, [id], (error, results) => {
+    if (!results.rows.length) {
+      return res.send("A task by this ID does not exist.");
+    }
+
+    pool.query(queries.updatePriority, [id, priority], (error, results) => {
+      if (error) throw error;
+
+      res.status(201).send("Task has been successfully updated.");
+    })
+  })
+}
+
+const updateStatus = (req, res) => {
+  const id = parseInt(req.params.id);
+  const { status } = req.body;
+
+  pool.query(queries.getTaskById, [id], (error, results) => {
+    if (!results.rows.length) {
+      return res.send("A task by this ID does not exist.");
+    }
+
+    pool.query(queries.updateStatus, [id, status], (error, results) => {
+      if (error) throw error;
+
+      res.status(201).send("Task has been successfully updated.");
+    })
+  })
+}
+
 module.exports = {
   addTask,
   deleteTask,
   getTasks,
   getTaskById,
   getTasksByStatus,
-  getTasksByPriority
+  getTasksByPriority,
+  updateDescription,
+  updatePriority,
+  updateStatus,
 };

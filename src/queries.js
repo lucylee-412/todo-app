@@ -29,6 +29,24 @@ const deleteTask = `
   DELETE FROM tasks WHERE id = $1
 `;
 
+const updateDescription = `
+  UPDATE tasks 
+  SET description = $2 
+  WHERE id = $1
+`;
+
+const updatePriority = `
+  UPDATE tasks 
+  SET priority = $2 
+  WHERE id = $1
+`;
+
+const updateStatus = `
+  UPDATE tasks 
+  SET status = $2 
+  WHERE id = $1
+`;
+
 module.exports = {
   addTask,
   deleteTask,
@@ -36,5 +54,8 @@ module.exports = {
   getTasks,
   getTaskById,
   getTasksByStatus,
-  getTasksByPriority
+  getTasksByPriority,
+  updateDescription,
+  updatePriority,
+  updateStatus,
 };

@@ -9,6 +9,10 @@ router.get('/priority/:priority', controller.getTasksByPriority);
 
 router.post('/', controller.addTask);
 
+router.put('/update/description/:id', controller.updateDescription);
+router.put('/update/priority/:id', controller.updatePriority);
+router.put('/update/status/:id', controller.updateStatus);
+
 router.delete('/:id', controller.deleteTask);
 
 module.exports = router;
