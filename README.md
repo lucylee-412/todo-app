@@ -1,6 +1,16 @@
 ### Frontend repository can be found [here](https://github.com/lucylee-412/todo-app-react).
 
-PSQL was used to create the database. The configuration can be found [here](db.js).  
+PSQL was used to create the database.
+- The configuration can be found [here](db.js).  
+- The SQL dump file can be found [here](todo.sql).
+1) Run SQL shell and create your database.
+2) Run cmd on adminstrator.
+3) `cd` to your PSQL bin folder. The file path should look something like this: `C:\Program Files\PostgreSQL\14\bin`.
+4) Restore the dump file in the database you created in step 1 by running the following command in cmd:
+```
+psql DATABASE_NAME_HERE < todo.sql
+```
+![image](https://user-images.githubusercontent.com/5422566/219656582-c6a9cf2f-55e8-486f-a50b-1caa47deda1c.png)
 
 Make sure you have the latest version of Express and Node installed.  
 
