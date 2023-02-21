@@ -29,23 +29,31 @@ const deleteTask = `
   DELETE FROM tasks WHERE id = $1
 `;
 
-const updateDescription = `
+const updateTask = `
   UPDATE tasks 
-  SET description = $2 
+  SET description = $2,
+      status = $3,
+      priority = $4
   WHERE id = $1
 `;
 
-const updatePriority = `
-  UPDATE tasks 
-  SET priority = $2 
-  WHERE id = $1
-`;
+// const updateDescription = `
+//   UPDATE tasks 
+//   SET description = $2 
+//   WHERE id = $1
+// `;
 
-const updateStatus = `
-  UPDATE tasks 
-  SET status = $2 
-  WHERE id = $1
-`;
+// const updatePriority = `
+//   UPDATE tasks 
+//   SET priority = $2 
+//   WHERE id = $1
+// `;
+
+// const updateStatus = `
+//   UPDATE tasks 
+//   SET status = $2 
+//   WHERE id = $1
+// `;
 
 module.exports = {
   addTask,
@@ -55,7 +63,8 @@ module.exports = {
   getTaskById,
   getTasksByStatus,
   getTasksByPriority,
-  updateDescription,
-  updatePriority,
-  updateStatus,
+  updateTask
+  // updateDescription,
+  // updatePriority,
+  // updateStatus,
 };

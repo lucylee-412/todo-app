@@ -9,9 +9,11 @@ router.get('/priority/:priority', controller.getTasksByPriority);
 
 router.post('/', controller.addTask);
 
-router.put('/update/description/:id', controller.updateDescription);
-router.put('/update/priority/:id', controller.updatePriority);
-router.put('/update/status/:id', controller.updateStatus);
+// router.put('/update/description/:id', controller.updateDescription);
+// router.put('/update/priority/:id', controller.updatePriority);
+// router.put('/update/status/:id', controller.updateStatus);
+
+router.patch('/update/:id', controller.updateTask);
 
 router.delete('/:id', controller.deleteTask);
 

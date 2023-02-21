@@ -5,7 +5,9 @@ const queries = require('./queries');
 const getTasks = (req, res) => {
   pool.query(queries.getTasks, (error, results) => {
     if (error) throw error;
-    
+
+    console.log("Test", results.rows[0].description)
+
     res.status(200).json(
       // {message: "Retrieved all tasks."}, 
       results.rows
@@ -96,6 +98,38 @@ const deleteTask = (req, res) => {
   });
 };
 
+const updateTask = (req, res) => {
+  const id = parseInt(req.params.id);
+  const { description, status, priority } = req.body;
+
+  pool.query(queries.getTaskById, [id], (error, results) => {
+    if (!results.rows.length) {
+      return res.send("A task by this ID does not exist.");
+    }
+
+    let newDescription = description;
+    let newStatus = status;
+    let newPriority = priority;
+
+    if (!description) {
+      newDescription = results.rows[0].description;
+    }
+    if (!status) {
+      newStatus = results.rows[0].status;
+    }
+    if (!priority) {
+      newPriority = results.rows[0].priority;
+    }
+    
+    pool.query(queries.updateTask, [id, newDescription, newStatus, newPriority], (error, results) => {
+      if (error) throw error;
+
+      res.status(201).send("Task has been successfully updated.");
+    })
+  })
+}
+
+/*
 const updateDescription = (req, res) => {
   const id = parseInt(req.params.id);
   const { description } = req.body;
@@ -146,6 +180,8 @@ const updateStatus = (req, res) => {
     })
   })
 }
+*/
+
 
 module.exports = {
   addTask,
@@ -154,7 +190,8 @@ module.exports = {
   getTaskById,
   getTasksByStatus,
   getTasksByPriority,
-  updateDescription,
-  updatePriority,
-  updateStatus,
+  updateTask
+  // updateDescription,
+  // updatePriority,
+  // updateStatus,
 };
