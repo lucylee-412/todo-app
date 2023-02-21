@@ -15,6 +15,6 @@ router.post('/', controller.addTask);
 
 router.patch('/update/:id', controller.updateTask);
 
-router.delete('/:id', controller.deleteTask);
+router.delete('/delete/:id', controller.deleteTask);
 
 module.exports = router;
